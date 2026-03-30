@@ -3,7 +3,7 @@ SECRET=$(( Random % 10 + 1 ))
 ATTEMPTS=0
 
 
-While true; do
+while true; do
    read -p "Guess a number: " guess
     
    increment=$((ATTEMPTS + 1))
