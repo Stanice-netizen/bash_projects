@@ -10,17 +10,21 @@ sum=$(( $num1 + $num2 ))
 dif=$(( $num1 - $num2 ))
 mul=$(( $num1 * $num2 ))
 div=$(( $num1 / $num2 ))
-  if [ $num1 == 0 ] && [ $num2 == 0 ]; then
-  printf "Invalid Input\n"
-  exit 1
-  elif [[ "$operator" == "*" ]]; then
-   printf "The product of $num1 and $num2 is $mul\n"
-  elif [[ "$operator" == "/" ]]; then
-   printf "The quotient between $num1 and $num2 is $div\n"
-  elif [[ "$operator" == "+" ]]; then
-   printf "The sum of $num1 and $num2 is $sum\n"
-  elif [[ "$operator" == "-" ]]; then
-   printf "The difference between $num1 and $num2 is $dif\n"
-  else 
-   printf "Cannot perform the arithmetic operation\n"
-   fi
+ 
+case $operator in
+'*') printf "The product of $num1 and $num2 is $mul\n"
+    ;;
+'/') if (( $num2 == 0 )); then 
+       echo "Can't be performed"
+     else
+       printf "The quotient between $num1 and $num2 is $div\n"
+       fi
+      ;;
+'+') printf "The sum of $num1 and $num2 is $sum\n"
+    ;;
+'-') printf "The difference between $num1 and $num2 is $dif\n"
+    ;;
+  
+'') echo "No operation"
+    ;;
+esac
